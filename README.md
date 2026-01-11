@@ -7,5 +7,8 @@ I separated the SQL learning journey into 3 parts.
   Advanced level: CTE, TEMP TABLE, TRIGGERS AND EVENT, DATA CLEANING.
 
 The db i use is: Beginner - Parks_and_Rec_Create_db
-
+The db has 3 tables:
+  employee_demographics
+  employee_salary
+  parks_departments
 
