@@ -6,4 +6,6 @@ I separated the SQL learning journey into 3 parts.
   Intermediate: JOINS, ALIAS, STRING, CASE STATEMENT, WINDOW FUNCTOIN.
   Advanced level: CTE, TEMP TABLE, TRIGGERS AND EVENT, DATA CLEANING.
 
-  
+The db i use is: Beginner - Parks_and_Rec_Create_db
+
+
