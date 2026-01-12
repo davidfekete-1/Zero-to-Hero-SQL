@@ -31,15 +31,27 @@ select right(first_name, 4) from employee_demographics;
 select left(first_name, 4), right(first_name, 2), substring(first_name,3,4), birth_date, substring(birth_date, 6,2) as Birht_month  from employee_demographics;
 
 /*Case statement*/
+/*Salary raise calculation and if the Employee works at Finance then 10% bonus */
 select first_name, last_name, salary, 
 case
 	when salary <=50000 then salary*1.05
 	when salary between 51000 and 100000 then salary*1.07
-end as ÉV_Végi_emelés,
+end as Yearly_raise,
 case
 	when dept_id = 6 then salary*0.1
-end as Bónusz
-from employee_salary
+end as Bonus
+from employee_salary;
+
+
+/*IF the age is less than 40 and its a Male give a bonus, plus write out the salary*/
+/*I used here Join, Case statement*/
+select dem.first_name, dem.last_name, sal.salary, dem.age, sal.dept_id,
+case
+ when age < 40 and gender ='Male' then 'Give 10% Bonus'
+end as EOY_Bonus
+from employee_demographics as dem
+join employee_salary as sal on dem.employee_id = sal.employee_id;
+
 
 /*Subquery*/
 
