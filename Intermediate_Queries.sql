@@ -13,7 +13,7 @@ select first_name, last_name , 'Elder Lady' as label
  from employee_demographics where age > 40 and gender ='Female'
  Union
 select first_name, last_name , 'Highly paid' as label
-from employee_salary where salary > 70000 order by first_name, last_name limit 2;
+from employee_salary where salary > 70000 order by first_name, last_name;
 
 /*---------------------------------------------------*/
 
@@ -30,8 +30,18 @@ select left(first_name, 4) from employee_demographics;
 select right(first_name, 4) from employee_demographics;
 select left(first_name, 4), right(first_name, 2), substring(first_name,3,4), birth_date, substring(birth_date, 6,2) as Birht_month  from employee_demographics;
 
+/*Case statement*/
+select first_name, last_name, salary, 
+case
+	when salary <=50000 then salary*1.05
+	when salary between 51000 and 100000 then salary*1.07
+end as ÉV_Végi_emelés,
+case
+	when dept_id = 6 then salary*0.1
+end as Bónusz
+from employee_salary
 
-
+/*Subquery*/
 
 
 
