@@ -14,3 +14,6 @@ The db has 3 tables:
 
 Beginner Queries: Beginner_Queries.sql
 Intermediate: Intermediate_Queries.sql
+
+
+
