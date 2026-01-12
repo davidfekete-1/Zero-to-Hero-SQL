@@ -1,4 +1,4 @@
-/*Join training*/
+/*Join*/
  
 /*Based on the employee_id the Name, Age, Salary and Occupation will match*/
 select dem.first_name, dem.last_name, dem.age, dep.occupation, dep.salary from employee_demographics as dem join employee_salary as dep on dem.employee_id = dep.employee_id;
@@ -52,8 +52,31 @@ end as EOY_Bonus
 from employee_demographics as dem
 join employee_salary as sal on dem.employee_id = sal.employee_id;
 
+/*----------------------------------------------------------------*/
 
 /*Subquery*/
+/*Giving back all the name from Employee_demograph table by filtering in Salary table*/
+select first_name, last_name from employee_demographics where employee_id IN
+(select employee_id from employee_salary where salary >= 60000);
+
+/*Listing only the Office Manager position. The position is stored in employee_salary table but the name comes from employee_demographics table  */
+select first_name, last_name from employee_demographics where employee_id in
+(select employee_id from employee_salary where occupation = 'Office Manager');
+
+/*-------------------------------------------------------------------------*/
+
+/* Window function*/
+
+select dem.first_name, dem.last_name, gender,  salary, sum(salary) over(Partition by gender order by dem.employee_id) as Rolling
+from employee_demographics dem
+join employee_salary sal
+on dem.employee_id = sal.employee_id;
+
+
+
+
+
+
 
 
 
