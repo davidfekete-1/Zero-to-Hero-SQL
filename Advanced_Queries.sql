@@ -1,3 +1,4 @@
+
 /*CTE*/
 with bigbrother as 
 (
@@ -24,7 +25,40 @@ END $$
 
 call large_salary();
 
-
 /*Triggers and Events*/
+DELIMITER $$
+CREATE TRIGGER employee_insert
+	AFTER insert on employee_salary
+	FOR EACH ROW
+BEGIN
+	INSERT INTO employee_demographics(employee_id, first_name, last_name)
+	VALUES (NEW.employee_id, NEW.first_name, NEW.last_name);
+END $$
+DELIMITER ;
+
+insert into employee_salary (employee_id, first_name, last_name, occupation, salary, dept_id)
+values (14, 'Rudolf', 'McGregor', 'Film manufacture', 150000, 2);
+
+
+/*EVENTS*/
+
+SELECT * from employee_demographics;
+
+DELIMITER $$
+create event delete_retirees
+on schedule every 30 SECOND
+do
+begin
+	DELETE
+    from employee_demographics
+    where age > 60;
+end $$
+DELIMITER ;
+
+
+
+
+
+
 
 
