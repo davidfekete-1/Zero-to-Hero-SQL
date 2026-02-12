@@ -57,7 +57,42 @@ Renting number by each country
 
 4) CASE STATEMENT
 
+Categorize the films based on runtime: Short (< 90 perc) Medium (90–120)Long (>120)
+select title,
+case 
+	when runtime < 90 then 'Short'
+	when runtime between 91 and 120 then 'Medium'
+	else 'Long' end as Long_Category
+from movies
+group by title, runtime
 
+6) SUBQUERIES
+
+Renting prices are higher than the average
+    select title
+    from movies
+    where renting_price > (
+	    select avg(renting_price)
+	    from movies
+	    );
+
+7) WINDOW FUNCTIONS
+
+Ranking the films based on the Genre
+select title, genre,
+RANK() over(partition by genre order by title) as rank
+from movies
+
+Average rating in each year for each category
+select 
+	m.genre,
+	m.year_of_release,
+	AVG(r.rating) over(partition by m.genre)
+from movies as m
+full join renting as r
+using (movie_id)
+where rating is not null
+group by m.genre, m.year_of_release, r.rating;
 
 
 
