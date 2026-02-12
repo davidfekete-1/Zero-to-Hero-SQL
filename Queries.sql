@@ -95,6 +95,37 @@ where rating is not null
 group by m.genre, m.year_of_release, r.rating;
 
 
+8) CTE
 
+Listing all tha Actor's name, nationality who played in a film longer than 120min. Using: CTE, Left and Cross join
+	
+	with avg_run as (
+	select avg(runtime) as avg_time
+	from movies
+)
 
+select a.name, a.nationality
+from actors as a
+left join actsin as b
+using(actor_id)
+left join movies as m
+using(movie_id)
+cross join avg_run as r
+where m.runtime > r.avg_time
+group by a.name, a.nationality
+order by a.name
+
+	
+9) TEMP TABLE
+	
+CREATE TEMP TABLE temp_movies AS
+select m.title, m.genre, Count(r.date_renting) as renting_number
+from movies as m
+left join renting as r
+using(movie_id)
+group by m.title,m.genre
+order by renting_number desc
+limit 10;
+
+select * from temp_movies
 
