@@ -1,19 +1,15 @@
 # Zero-to-Hero-SQL
-I am documenting my learning journey toward becoming an SQL expert. This is a self-teaching lerning by doing method
 
-I separated my SQL learning journey into 3 parts. 
-  - Beginner: DB creation, Select, Where, Group By, AND, OR, IN, DISTINCT, ORDER BY, LIMIT, COUNT, AVG, MAX and MIN.
-  - Intermediate: JOINS, ALIAS, STRING, CASE STATEMENT, Subqueries, WINDOW FUNCTOIN.
-  - Advanced level: CTE, TEMP TABLE, TRIGGERS AND EVENT, DATA CLEANING.
+This repository is my personal SQL practice project built around a PostgreSQL database called **`movies_db`**.
 
-The db i use is: Beginner - Parks_and_Rec_Create_db.
-The db has 3 tables:
-  - employee_demographics
-  - employee_salary
-  - parks_departments
+The goal is to improve my SQL skills with realistic movie-related data by writing queries from basic filtering all the way to advanced analytics patterns (CTEs, window functions, triggers, etc.).
 
-Beginner Queries: Beginner_Queries.sql
-Intermediate: Intermediate_Queries.sql
+🧠 What I’m practicing:
+  - Select, Where, Group By, AND, OR, IN, DISTINCT, ORDER BY, LIMIT, COUNT, AVG, MAX and MIN
+  - JOINS, ALIAS, STRING, CASE STATEMENT, Subqueries, WINDOW FUNCTOIN
+  - CTE, TEMP TABLE, TRIGGERS AND EVENT,
 
-
+🛠️ Requirements
+- PostgreSQL (recommended: v13+)
+- A SQL client (optional): pgAdmin
 
