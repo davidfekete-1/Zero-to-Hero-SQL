@@ -10,6 +10,6 @@ The goal is to improve my SQL skills with realistic movie-related data by writin
   - CTE, TEMP TABLE, TRIGGERS AND EVENT,
 
 🛠️ Requirements
-- PostgreSQL (recommended: v13+)
-- A SQL client (optional): pgAdmin
+- PostgreSQL: v18
+- A SQL client: pgAdmin
 
