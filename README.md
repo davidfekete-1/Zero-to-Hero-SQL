@@ -9,6 +9,13 @@ The goal is to improve my SQL skills with realistic movie-related data by writin
   - JOINS, ALIAS, STRING, CASE STATEMENT, Subqueries, WINDOW FUNCTOIN
   - CTE, TEMP TABLE, TRIGGERS AND EVENT,
 
+DB has 5 tables:
+  - actors
+  - actsin
+  - customers
+  - movies
+  - renting
+
 🛠️ Requirements
 - PostgreSQL: v18
 - A SQL client: pgAdmin
