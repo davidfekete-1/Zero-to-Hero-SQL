@@ -7,7 +7,7 @@ The goal is to improve my SQL skills with realistic movie-related data by writin
 🧠 What I’m practicing:
   - Select, Where, Group By, AND, OR, IN, DISTINCT, ORDER BY, LIMIT, COUNT, AVG, MAX and MIN
   - JOINS, ALIAS, STRING, CASE STATEMENT, Subqueries, WINDOW FUNCTOIN
-  - CTE, TEMP TABLE, TRIGGERS AND EVENT,
+  - CTE, TEMP TABLE
 
 DB has 5 tables:
   - actors
