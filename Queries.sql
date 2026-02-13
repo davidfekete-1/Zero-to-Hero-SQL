@@ -175,7 +175,7 @@ Result:
 	
 3, Which release year is the most popular?
 
-	select m.title ,count(r.date_renting) as most_rented, m.year_of_release
+select m.title ,count(r.date_renting) as most_rented, m.year_of_release
 from movies as m
 left join renting as r
 using(movie_id)
@@ -188,9 +188,18 @@ Result:
 "The Kingdom"	15	2007
 
 
+	
+4,Ratio of new vs old movies (New>=2010, Old: Before 2010) 
+Total number of films: 71
+select Count(year_of_release)
+from movies;
+
+New Films: 22
+	where year_of_release >= 2010
+Old Films: 49
+	where year_of_release < 2010
 
 	
-4	Ratio of new vs old movies
 5	Who rents the most?
 6	Average number of rentals per customer
 7	Customer Lifetime Value (CLV)
