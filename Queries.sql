@@ -190,15 +190,38 @@ Result:
 
 	
 4,Ratio of new vs old movies (New>=2010, Old: Before 2010) 
-Total number of films: 71
-select Count(year_of_release)
-from movies;
+	
+with new_films as (
+select Count(year_of_release) as nfilm
+from movies
+where year_of_release >= 2010),
 
-New Films: 22
-	where year_of_release >= 2010
-Old Films: 49
-	where year_of_release < 2010
+old_films as (
+select Count(year_of_release) as olfilm
+from movies
+where year_of_release < 2010
+),
 
+total_films as (
+select Count(year_of_release) as tot
+from movies 
+)
+
+select 
+	new_films.nfilm,
+	old_films.olfilm,
+	total_films.tot,
+	ROUND(new_films.nfilm::numeric / NULLIF(total_films.tot, 0) * 100, 2) AS new_ration,
+	ROUND(old_films.olfilm::numeric / NULLIF(total_films.tot, 0) * 100, 2) AS old_ration
+	from new_films
+	cross join old_films
+	cross join total_films;
+
+	Result:
+	"nfilm"	"olfilm"	"tot"	"new_ration"	"old_ration"
+		22	49			71			30.99			69.01
+	Old ration: 69%
+	New Ration: 31%
 	
 5	Who rents the most?
 6	Average number of rentals per customer
