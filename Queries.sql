@@ -130,9 +130,66 @@ limit 10;
 	
 10) BONUS: REAL-LIFE EXAMPLES
 	
-1	Which movie is rented the most?
-2	Top 10 movies by revenue
-3	Which release year is the most popular?
+1, Which movie is rented the most?
+
+select m.title, count(r.date_renting) as most_rented
+from movies as m
+left join renting as r
+using(movie_id)
+group by m.title
+order by most_rented desc
+LIMIT 3;
+
+Result:
+"title"	"most_rented"
+"The Kingdom"	15
+"Training Day"	14
+"Harry Potter and the Half-Blood Prince"	13
+
+	
+2, Top 10 movies by revenue
+
+select m.title, SUM(m.renting_price) as Rent_price,count(r.date_renting) as most_rented
+from movies as m
+left join renting as r
+using(movie_id)
+group by m.title
+order by most_rented desc
+LIMIT 10;
+
+	
+Result:
+"title"	"rent_price"	"most_rented"
+"The Kingdom"	31.35	15
+"Training Day"	25.06	14
+"Harry Potter and the Half-Blood Prince"	20.67	13
+"Bridget Jones - The Edge of Reason"	37.57	13
+"Monster"	27.17	13
+"World Trade Center"	20.67	13
+"Harry Potter and the Deathly Hallows – Part 2"	23.88	12
+"Fair Game"	34.68	12
+"25th Hour"	17.49	11
+"Shall We Dance"	18.59	11
+
+
+	
+3, Which release year is the most popular?
+
+	select m.title ,count(r.date_renting) as most_rented, m.year_of_release
+from movies as m
+left join renting as r
+using(movie_id)
+group by m.title,  m.year_of_release
+order by most_rented desc
+LIMIT 1;
+
+Result:
+"title"	"most_rented"	"year_of_release"
+"The Kingdom"	15	2007
+
+
+
+	
 4	Ratio of new vs old movies
 5	Who rents the most?
 6	Average number of rentals per customer
