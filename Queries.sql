@@ -127,5 +127,26 @@ group by m.title,m.genre
 order by renting_number desc
 limit 10;
 
-select * from temp_movies
+	
+10) BONUS: REAL-LIFE EXAMPLES
+	
+1	Which movie is rented the most?
+2	Top 10 movies by revenue
+3	Which release year is the most popular?
+4	Ratio of new vs old movies
+5	Who rents the most?
+6	Average number of rentals per customer
+7	Customer Lifetime Value (CLV)
+8	Returning vs one-time customers
+9	In which month is revenue the highest?
+10	Weekend vs weekday performance
+11	Seasonal patterns (e.g. Christmas, summer)
+12	Year-over-Year (YoY) growth
+13	Revenue by genre
+14	Average rental price
+15	Most profitable category
+16	Do the top 20% of movies generate 80% of the revenue? (Pareto 👀)
+17	Which genre is the most popular?
+18	Male vs female customer preferences (if gender data is available)
+19	Age group vs genre (if birth year is available)
 
