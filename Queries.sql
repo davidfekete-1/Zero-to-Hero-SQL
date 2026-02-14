@@ -266,15 +266,60 @@ Result:
 116
 	
 	
-8	In which month is revenue the highest?
-9	Weekend vs weekday performance
-10	Seasonal patterns (e.g. Christmas, summer)
-11	Year-over-Year (YoY) growth
-12	Revenue by genre
-13	Average rental price
-14	Most profitable category
-15	Do the top 20% of movies generate 80% of the revenue? (Pareto 👀)
-16	Which genre is the most popular?
-17	Male vs female customer preferences (if gender data is available)
-18	Age group vs genre (if birth year is available)
+8	Highest trafic in the shop?
+
+select Extract(month from date_renting) as month, count(*) as renting_num
+from renting
+group by month
+order by renting_num desc
+limit 1;
+
+Result:
+"month"	"renting_num"
+4	80
+April, 80 rent
+
+	
+9	In which month is revenue the highest?
+
+select Extract(month from date_renting) as month, count(*) as renting_num, SUM(renting_price) as max_income
+from renting
+left join movies
+using(movie_id)
+group by month
+order by max_income desc
+limit 1
+;	
+
+Result:
+"month"	"renting_num"	"max_income"
+4	80	174.50
+April, $174.5 incomimg
+
+
+11	Seasonal patterns (e.g. Christmas, summer)
+	
+12	Year-over-Year (YoY) growth
+
+select Extract(year from date_renting) as year, SUM(renting_price) as yearly_income
+from renting
+left join movies
+using(movie_id)
+group by year
+order by yearly_income desc;	
+
+Result:
+"year"	"yearly_income"
+2018	658.02
+2019	354.51
+2017	263.19
+
+	
+13	Revenue by genre
+14	Average rental price
+15	Most profitable category
+16	Do the top 20% of movies generate 80% of the revenue? (Pareto 👀)
+17	Which genre is the most popular?
+18	Male vs female customer preferences (if gender data is available)
+19	Age group vs genre (if birth year is available)
 
