@@ -315,9 +315,57 @@ Result:
 2017	263.19
 
 	
-13	Revenue by genre
-14	Average rental price
+13	Revenue by genre top 3
+
+select genre, count(renting_price) as income
+from movies
+left join renting
+using(movie_id)
+group by genre
+order by income desc
+limit 3	
+
+Result:
+"genre"	"income"
+"Drama"	319
+"Science Fiction & Fantasy"	95
+"Comedy"	69
+
+	
+14	Average rental price per genre
+select genre, ROUND(AVG(renting_price),2) as income
+from movies
+left join renting
+using(movie_id)
+group by genre
+order by income desc
+
+Result:
+"genre"	"income"
+"Other"	2.60
+"Art House & International"	2.59
+"Action & Adventure"	2.47
+"Comedy"	2.31
+"Science Fiction & Fantasy"	2.21
+"Drama"	2.16
+"Mystery & Suspense"	2.14
+"Animation"	1.79
+	
+	
 15	Most profitable category
+select genre, ROUND(SUM(renting_price),2) as income
+from movies
+left join renting
+using(movie_id)
+group by genre
+order by income desc
+limit 1
+
+Result:
+"genre"	"income"
+"Drama"	689.11
+	
+
 16	Do the top 20% of movies generate 80% of the revenue? (Pareto 👀)
 17	Which genre is the most popular?
 18	Male vs female customer preferences (if gender data is available)
