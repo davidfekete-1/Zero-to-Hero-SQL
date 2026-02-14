@@ -367,7 +367,36 @@ Result:
 	
 
 16	Do the top 20% of movies generate 80% of the revenue? (Pareto 👀)
-17	Which genre is the most popular?
 18	Male vs female customer preferences (if gender data is available)
+
+Male customer preference is:
+select genre, COUNT(gender) as gender
+from customers
+cross join renting
+cross join movies
+where gender = 'male'
+group by genre
+order by gender desc
+limit 1
+
+Result: 
+"preference"	"gender"
+"Drama"	1248480
+
+Female
+select genre as Preference, COUNT(gender) as gender
+from customers
+cross join renting
+cross join movies
+where gender = 'female'
+group by genre
+order by gender desc
+limit 1;
+
+Result:
+"preference"	"gender"
+"Drama"	1290096
+
+	
 19	Age group vs genre (if birth year is available)
 
