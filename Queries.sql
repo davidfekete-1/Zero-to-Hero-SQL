@@ -236,18 +236,45 @@ limit 1;
 "Lucy Centeno Barrios"	15
 
 	
-6	Average number of rentals per customer
-7	Customer Lifetime Value (CLV)
-8	Returning vs one-time customers
-9	In which month is revenue the highest?
-10	Weekend vs weekday performance
-11	Seasonal patterns (e.g. Christmas, summer)
-12	Year-over-Year (YoY) growth
-13	Revenue by genre
-14	Average rental price
-15	Most profitable category
-16	Do the top 20% of movies generate 80% of the revenue? (Pareto 👀)
-17	Which genre is the most popular?
-18	Male vs female customer preferences (if gender data is available)
-19	Age group vs genre (if birth year is available)
+6, Average number of rentals per customer
+	
+7, Returning vs one-time customers ratio
+One-time renters:
+	SELECT COUNT(*) AS one_time_customers
+FROM (
+  SELECT customer_id
+  FROM renting
+  GROUP BY customer_id
+  HAVING COUNT(*) = 1
+);
+
+Result:
+"one_time_customers"
+14
+
+Returning renters:
+SELECT COUNT(*) AS more_time_customers
+FROM (
+  SELECT customer_id
+  FROM renting
+  GROUP BY customer_id
+  HAVING COUNT(*) >= 1
+);
+
+Result:
+"one_time_customers"
+116
+	
+	
+8	In which month is revenue the highest?
+9	Weekend vs weekday performance
+10	Seasonal patterns (e.g. Christmas, summer)
+11	Year-over-Year (YoY) growth
+12	Revenue by genre
+13	Average rental price
+14	Most profitable category
+15	Do the top 20% of movies generate 80% of the revenue? (Pareto 👀)
+16	Which genre is the most popular?
+17	Male vs female customer preferences (if gender data is available)
+18	Age group vs genre (if birth year is available)
 
