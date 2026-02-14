@@ -224,6 +224,18 @@ select
 	New Ration: 31%
 	
 5	Who rents the most?
+select c.name, count(customer_id) as most_rent
+from renting
+left join customers as c
+using(customer_id)
+group by customer_id, c.name
+order by most_rent desc
+limit 1;
+
+"name"	"most_rent"
+"Lucy Centeno Barrios"	15
+
+	
 6	Average number of rentals per customer
 7	Customer Lifetime Value (CLV)
 8	Returning vs one-time customers
