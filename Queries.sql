@@ -421,5 +421,27 @@ Result:
 "Drama"	1290096
 
 	
-19	Age group vs genre (if birth year is available)
+19	Age groups
+	
+select 2025 - extract(year from date_of_birth)
+from customers;
+
+with bins as (
+select generate_series(20,50,10) as lower,
+	generate_series(30,60,10) as higher
+)
+select * from bins;
+
+select extract(year from date_of_birth)
+from customers
+cross join bins
+ON day >=  lower AND day < upper
+
+Result:
+"lower"	"upper"	"customers_in_bin"
+20-30:	18
+30-40:	45
+40-50:	37
+50-60:	22
+
 
