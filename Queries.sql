@@ -366,7 +366,30 @@ Result:
 "Drama"	689.11
 	
 
-16	Do the top 20% of movies generate 80% of the revenue? (Pareto 👀)
+16	Do the top 20% of movies generate 80% of the revenue?
+with total_rev_calc as (
+select SUM(renting_price) as Total_revenue from renting
+left join movies
+using(movie_id)
+),
+
+top20filmincome as (
+SELECT SUM(renting_price) as TOP20Film
+FROM renting as r
+left join movies as m
+using (movie_id)
+WHERE m.renting_price >= (
+  SELECT percentile_cont(0.8) WITHIN GROUP (ORDER BY renting_price)
+  FROM movies
+))
+
+select ROUND((top20filmincome.TOP20Film/total_rev_calc.Total_revenue)*100, -1) from total_rev_calc
+cross join top20filmincome
+
+Result:
+"top20revinper"
+30
+	
 18	Male vs female customer preferences (if gender data is available)
 
 Male customer preference is:
